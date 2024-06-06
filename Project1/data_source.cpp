@@ -1,16 +1,16 @@
 #include <iostream>
 #include <string>
-#include <vector>
 #include <thread>
 #include <chrono>
 #include <random>
 #include <boost/asio.hpp>
+#include <cstring>
 
 struct Student {
-    std::string name;
+    char name[50];
     long number;
     long grade;
-    std::string hobby[3];
+    char hobby[3][30];
 };
 
 Student generateStudent(int grade) {
@@ -22,24 +22,34 @@ Student generateStudent(int grade) {
     student.number = dist(gen);
     student.grade = grade;
     // Populate other fields...
+    std::strncpy(student.name, "John Doe", sizeof(student.name));
+    std::strncpy(student.hobby[0], "Reading", sizeof(student.hobby[0]));
+    std::strncpy(student.hobby[1], "Swimming", sizeof(student.hobby[1]));
+    std::strncpy(student.hobby[2], "Gaming", sizeof(student.hobby[2]));
     return student;
 }
 
 void dataSource(const std::string& host, int port, int grade, int interval_ms) {
-    boost::asio::io_context io_context;
-    boost::asio::ip::tcp::socket socket(io_context);
-    socket.connect(boost::asio::ip::tcp::endpoint(boost::asio::ip::address::from_string(host), port));
+    try {
+        boost::asio::io_context io_context;
+        boost::asio::ip::tcp::socket socket(io_context);
+        boost::asio::ip::tcp::resolver resolver(io_context);
+        boost::asio::connect(socket, resolver.resolve(host, std::to_string(port)));
 
-    while (true) {
-        Student student = generateStudent(grade);
-        boost::asio::write(socket, boost::asio::buffer(&student, sizeof(student)));
-        std::this_thread::sleep_for(std::chrono::milliseconds(interval_ms));
+        while (true) {
+            Student student = generateStudent(grade);
+            boost::asio::write(socket, boost::asio::buffer(&student, sizeof(student)));
+            std::this_thread::sleep_for(std::chrono::milliseconds(interval_ms));
+        }
+    } catch (std::exception& e) {
+        std::cerr << "Exception: " << e.what() << "\n";
+        std::cout << "This student is dead\n";
     }
 }
 
 int main() {
-    std::thread t1(dataSource, "127.0.0.1", 9999, 2, 500);
-    std::thread t2(dataSource, "127.0.0.1", 9999, 3, 1000);
+    std::thread t1(dataSource, "127.0.0.1", 8080, 2, 500);
+    std::thread t2(dataSource, "127.0.0.1", 8080, 3, 1000);
     t1.join();
     t2.join();
     return 0;

@@ -2,6 +2,8 @@
     "files.associations": {
         "*.ipp": "cpp",
         "string": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "mutex": "cpp",
+        "chrono": "cpp"
     }
 }
