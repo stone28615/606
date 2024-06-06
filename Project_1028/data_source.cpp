@@ -39,7 +39,6 @@ void dataSource(const std::string& host, int port, int grade, int interval_ms) {
         while (true) {
             Student student = generateStudent(grade);
             boost::asio::write(socket, boost::asio::buffer(&student, sizeof(student)));
-            std::cout << "Sent student with number " << student.number << " and grade " << student.grade << "\n";
             std::this_thread::sleep_for(std::chrono::milliseconds(interval_ms));
         }
     } catch (std::exception& e) {

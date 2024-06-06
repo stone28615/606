@@ -1,13 +1,13 @@
-    #include <iostream>
-    #include <fstream>
-    #include <vector>
-    #include <algorithm>
-    #include <thread>
-    #include <mutex>
-    #include <boost/asio.hpp>
-    #include <ctime>
-    #include <iomanip>
-    #include <sstream>
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+#include <thread>
+#include <mutex>
+#include <boost/asio.hpp>
+#include <ctime>
+#include <iomanip>
+#include <sstream>
 
 struct Student {
     char name[50];
@@ -36,7 +36,7 @@ void handleConnection(boost::asio::ip::tcp::socket socket) {
                 std::lock_guard<std::mutex> lock(students_mutex);
                 students.push_back(student);
 
-                if (students.size() >= 50) {
+                if (students.size() >= 1000) {
                     std::sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
                         return a.number < b.number;
                     });
@@ -45,7 +45,7 @@ void handleConnection(boost::asio::ip::tcp::socket socket) {
                     auto tm = *std::localtime(&t);
                     std::ostringstream oss; // Create a string stream
                     oss << std::put_time(&tm, "%Y%m%d%H%M%S") << ".txt";
-                    std::string filename = "../log/" + oss.str();
+                    std::string filename = oss.str();
 
                     std::ofstream file(filename); // Will be closed when file goes out of scope
                     for (const auto& s : students) {
@@ -62,12 +62,6 @@ void handleConnection(boost::asio::ip::tcp::socket socket) {
 }
 
 int main() {
-    // Ensure the log directory exists
-    struct stat info;
-    if (stat("../log", &info) != 0 || !(info.st_mode & S_IFDIR)) {
-        mkdir("../log", 0777); // Create the log directory
-    }
-
     try {
         boost::asio::io_context io_context;
         boost::asio::ip::tcp::acceptor acceptor(io_context, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), 8080));
