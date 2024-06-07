@@ -103,6 +103,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.22/Modules/FindBoost.cmake"
   "/usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake"
   "/usr/share/cmake-3.22/Modules/FindPackageMessage.cmake"
+  "/usr/share/cmake-3.22/Modules/FindSQLite3.cmake"
   "/usr/share/cmake-3.22/Modules/Internal/FeatureTesting.cmake"
   "/usr/share/cmake-3.22/Modules/Platform/Linux-Determine-CXX.cmake"
   "/usr/share/cmake-3.22/Modules/Platform/Linux-GNU-C.cmake"
@@ -132,4 +133,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/data_source.dir/DependInfo.cmake"
   "CMakeFiles/data_center.dir/DependInfo.cmake"
+  "CMakeFiles/create_log_directory.dir/DependInfo.cmake"
   )

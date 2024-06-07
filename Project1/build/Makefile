@@ -142,6 +142,19 @@ data_center/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_center.dir/build.make CMakeFiles/data_center.dir/build
 .PHONY : data_center/fast
 
+#=============================================================================
+# Target rules for targets named create_log_directory
+
+# Build rule for target.
+create_log_directory: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 create_log_directory
+.PHONY : create_log_directory
+
+# fast build rule for target.
+create_log_directory/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/create_log_directory.dir/build.make CMakeFiles/create_log_directory.dir/build
+.PHONY : create_log_directory/fast
+
 data_center.o: data_center.cpp.o
 .PHONY : data_center.o
 
@@ -198,6 +211,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... create_log_directory"
 	@echo "... data_center"
 	@echo "... data_source"
 	@echo "... data_center.o"

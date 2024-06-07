@@ -226,6 +226,12 @@ DataCollection_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 DataCollection_SOURCE_DIR:STATIC=/home/brushstone/Desktop/606/Project1
 
+//Path to a file.
+SQLite3_INCLUDE_DIR:PATH=/usr/include
+
+//Path to a library.
+SQLite3_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libsqlite3.so
+
 //The directory containing a CMake configuration file for boost_headers.
 boost_headers_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/boost_headers-1.74.0
 
@@ -384,6 +390,12 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Boost
 FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake][cfound components: system ][v1.74.0()]
+//Details about finding SQLite3
+FIND_PACKAGE_MESSAGE_DETAILS_SQLite3:INTERNAL=[/usr/include][/usr/lib/x86_64-linux-gnu/libsqlite3.so][v3.37.2()]
+//ADVANCED property for variable: SQLite3_INCLUDE_DIR
+SQLite3_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SQLite3_LIBRARY
+SQLite3_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: boost_headers_DIR
 boost_headers_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: boost_system_DIR

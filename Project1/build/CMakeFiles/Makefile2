@@ -74,13 +74,14 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/data_source.dir/clean
 clean: CMakeFiles/data_center.dir/clean
+clean: CMakeFiles/create_log_directory.dir/clean
 .PHONY : clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/data_source.dir
 
 # All Build rule for target.
-CMakeFiles/data_source.dir/all:
+CMakeFiles/data_source.dir/all: CMakeFiles/create_log_directory.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_source.dir/build.make CMakeFiles/data_source.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_source.dir/build.make CMakeFiles/data_source.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/brushstone/Desktop/606/Project1/build/CMakeFiles --progress-num=3,4 "Built target data_source"
@@ -106,7 +107,7 @@ CMakeFiles/data_source.dir/clean:
 # Target rules for target CMakeFiles/data_center.dir
 
 # All Build rule for target.
-CMakeFiles/data_center.dir/all:
+CMakeFiles/data_center.dir/all: CMakeFiles/create_log_directory.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_center.dir/build.make CMakeFiles/data_center.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_center.dir/build.make CMakeFiles/data_center.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/brushstone/Desktop/606/Project1/build/CMakeFiles --progress-num=1,2 "Built target data_center"
@@ -127,6 +128,32 @@ data_center: CMakeFiles/data_center.dir/rule
 CMakeFiles/data_center.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/data_center.dir/build.make CMakeFiles/data_center.dir/clean
 .PHONY : CMakeFiles/data_center.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/create_log_directory.dir
+
+# All Build rule for target.
+CMakeFiles/create_log_directory.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/create_log_directory.dir/build.make CMakeFiles/create_log_directory.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/create_log_directory.dir/build.make CMakeFiles/create_log_directory.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/brushstone/Desktop/606/Project1/build/CMakeFiles --progress-num= "Built target create_log_directory"
+.PHONY : CMakeFiles/create_log_directory.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/create_log_directory.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brushstone/Desktop/606/Project1/build/CMakeFiles 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/create_log_directory.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brushstone/Desktop/606/Project1/build/CMakeFiles 0
+.PHONY : CMakeFiles/create_log_directory.dir/rule
+
+# Convenience name for target.
+create_log_directory: CMakeFiles/create_log_directory.dir/rule
+.PHONY : create_log_directory
+
+# clean rule for target.
+CMakeFiles/create_log_directory.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/create_log_directory.dir/build.make CMakeFiles/create_log_directory.dir/clean
+.PHONY : CMakeFiles/create_log_directory.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
